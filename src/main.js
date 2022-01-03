@@ -1,26 +1,24 @@
 #!/usr/bin/env node
 
-let bookCollection = [
-	{
-		title: 'Book 1',
-		author: 'jose',
-		id: 0
-	},
-	{
-		title: 'Book 2',
-		author: 'andres',
-		id: 1
-	},
-	{
-		title: 'Book 3',
-		author: 'microverse',
-		id: 2
-	},
-];
+let bookCollection = [];
+
+const $ = selector => document.querySelector(selector) 
+
+const $titleInput = $('#titleInput');
+const $authorInput = $('#authorInput');
+const $addBookBtn = $('#addBookBtn');
+
+let bookId = 0;
 
 function addBook() {
-
+	bookCollection.push({title: $titleInput.value, author: $authorInput.value, id: bookId});
+	displayBookCollection();
+	console.log(bookCollection);
+	bookId += 1;
 }
+
+$addBookBtn.addEventListener('click', addBook)
+
 
 function removeBook() {
 	console.log("book added");
@@ -34,24 +32,26 @@ return `
 
 }
 
+function catchLocal() {
 
-function displayBookCollection() {
+
 }
 
-const bookContainer = document.querySelector('#book-container');
+function getLocal() {
 
-const myBooks = bookCollection.map( (el)=>{
-		const article = document.createElement('article');
-		article.className= 'article-book';
-		article.innerHTML = createBook(el);
-		bookContainer.appendChild(article);
-	}
-)
-	
+}
 
+function displayBookCollection() {
+	const bookContainer = document.querySelector('#book-container');
+	bookContainer.innerHTML = '';
 
-// for(let i = 0; i < myBooks.length; i+=1) {
-// 	bookContainer(myBooks[i]);
-// 	console.log('3')
-// }
-	
+	bookCollection.map( (el)=>{
+			const article = document.createElement('article');
+			article.className= 'article-book';
+			article.innerHTML = createBook(el);
+			bookContainer.appendChild(article);
+		}
+	)
+}
+
+displayBookCollection();
