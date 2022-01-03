@@ -1,12 +1,36 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/style.css" type="text/css" media="all">
   <title>Document</title>
 </head>
 <body>
-  <h1 class="title">Awesome Books</h1>
+  <main>
+    <h1 class="title">
+      Awesome books
+    </h1>
+
+    <section class="list-section">
+      <ul class="list-books">
+        <li class="item-book-list">
+          <p class="title-text">Title</p>
+          <p class="author-text">Author</p>
+          <button class="removeBook">Remove</button>
+        </li>
+      </ul>
+    </section>
+
+    <section class="form">
+      <input type="text" placeholder="Title" name="title" id="title"/>
+      <input type="text" placeholder="Author" name="author" id="author"/>
+      <button class="addBook" id="addBook">Add</button>
+    </section>
+  </main>
+
+  <script src="./main.js"></script>
   
 </body>
 </html>
