@@ -10,18 +10,48 @@ const $addBookBtn = $('#addBookBtn');
 
 let bookId = 0;
 
+
+
+function catchLocal() {
+const catchId = JSON.stringify(bookId);
+const catchCollection = JSON.stringify(bookCollection);
+
+localStorage.setItem('bookCollection', catchCollection);
+localStorage.setItem('bookId', catchId);
+}
+
+
+function getLocal() {
+	if (localStorage.getItem('bookCollection')){
+	bookCollection = JSON.parse(localStorage.getItem('bookCollection'));
+	let num = bookCollection.lenght
+	bookId = JSON.parse(localStorage.getItem('num'));
+	console.log(bookId)
+	//catchLocal();
+	}
+}
+
+
+getLocal();
+window.onload = getLocal();
+
+
+
+
 function addBook() {
 	bookCollection.push({title: $titleInput.value, author: $authorInput.value, id: bookId});
 	displayBookCollection();
 	console.log(bookCollection);
 	bookId += 1;
+	catchLocal();
 }
+
 
 $addBookBtn.addEventListener('click', addBook)
 
 
 function removeBook() {
-	console.log("book added");
+	catchLocal();
 }
 
 function createBook(el) {
@@ -29,17 +59,8 @@ return `
 <h3 class="bookTitle">${el.title}</h3>
 <p class="bookAuthor">${el.author}</p>
 <button type='button' class="addBook">Remove</button>`
-
 }
 
-function catchLocal() {
-
-
-}
-
-function getLocal() {
-
-}
 
 function displayBookCollection() {
 	const bookContainer = document.querySelector('#book-container');
