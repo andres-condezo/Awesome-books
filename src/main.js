@@ -9,20 +9,27 @@ const $authorInput = $('#authorInput');
 const $addBookBtn = $('#addBookBtn');
 const $bookContainer = $('#book-container');
 
-let bookCollection = [];
+
 
 // ***************
 // Local Storage
 // ***************
 
-function saveLocal() {
-  const catchCollection = JSON.stringify(bookCollection);
+class Collection {
+  constructor() {
+    this.bookCollection = [];
+  }
+
+
+
+saveLocal() {
+  const catchCollection = JSON.stringify(this.bookCollection);
   localStorage.setItem('bookCollection', catchCollection);
 }
 
-function getLocal() {
+getLocal() {
   if (localStorage.getItem('bookCollection')) {
-    bookCollection = JSON.parse(localStorage.getItem('bookCollection'));
+    this.bookCollection = JSON.parse(localStorage.getItem('bookCollection'));
   }
 }
 
@@ -30,7 +37,7 @@ function getLocal() {
 // main functions
 // ***************
 
-function bookTemplate(el) {
+bookTemplate(el) {
   return `
 <h3 class="bookTitle">${el.title}</h3>
 <p class="bookAuthor">${el.author}</p>
@@ -38,54 +45,58 @@ function bookTemplate(el) {
 `;
 }
 
-function renderBooks() {
+renderBooks() {
   $bookContainer.innerHTML = '';
-  bookCollection.forEach((el) => {
+  this.bookCollection.forEach((el) => {
     const article = document.createElement('article');
     article.className = 'article-book';
-    article.innerHTML = bookTemplate(el);
+    article.innerHTML = this.bookTemplate(el);
     $bookContainer.appendChild(article);
   });
 }
 
-function createRemoveBtn() {
+createRemoveBtn() {
   const $removeBookBtn = document.querySelectorAll('.removeBookBtn');
   $removeBookBtn.forEach((el, index) => {
     el.addEventListener('click', () => {
       bookCollection.splice(index, 1);
-      renderBooks();
-      createRemoveBtn();
-      saveLocal();
+      this.renderBooks();
+      this.createRemoveBtn();
+      this.saveLocal();
     });
   });
 }
 
-function displayBookCollection() {
-  renderBooks();
-  createRemoveBtn();
+displayBookCollection() {
+  this.renderBooks();
+  this.createRemoveBtn();
 }
 
-function clearFields() {
+clearFields() {
   $titleInput.value = '';
   $authorInput.value = '';
 }
 
-function addBook() {
+addBook() {
   if ($titleInput.value && $authorInput.value) {
-    bookCollection.push({
+    this.bookCollection.push({
       title: $titleInput.value,
       author: $authorInput.value,
     });
-    displayBookCollection();
-    saveLocal();
-    clearFields();
+    this.displayBookCollection();
+    this.saveLocal();
+    this.clearFields();
   }
 }
 
-function main() {
-  getLocal();
-  displayBookCollection();
-  $addBookBtn.addEventListener('click', addBook);
+main() {
+  this.getLocal();
+  this.displayBookCollection();
+  $addBookBtn.addEventListener('click', this.addBook);
+}
 }
 
-main();
+
+
+const Book = new Collection();
+Book.main();
