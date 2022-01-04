@@ -61,7 +61,6 @@ function createRemoveBtn() {
 }
 
 function displayBookCollection() {
-  $bookContainer.innerHTML = '';
   renderBooks();
   createRemoveBtn();
 }
