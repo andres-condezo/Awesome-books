@@ -2,7 +2,7 @@
 
 >	This is an awesome book list app.
 
->	## Screenshots:
+## Screenshots:
 
 - Mobile version:
 
