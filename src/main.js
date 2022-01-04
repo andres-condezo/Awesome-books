@@ -34,7 +34,7 @@ function bookTemplate(el) {
   return `
 <h3 class="bookTitle">${el.title}</h3>
 <p class="bookAuthor">${el.author}</p>
-<button type='button' class="createRemoveBtnBtn">Remove</button>
+<button type='button' class="removeBookBtn">Remove</button>
 `;
 }
 
