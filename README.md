@@ -6,11 +6,11 @@
 
 - Mobile version:
 
-![screenshot](./img/screenshot-mobile.png)
+![screenshot](./src/img/screenshot-mobile.png)
 
 - Desktop version:
 
-![screenshot](./img/screenshot-desktop.png)
+![screenshot](./src/img/screenshot-desktop.png)
 
 
 ## Built With
