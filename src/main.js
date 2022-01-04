@@ -8,49 +8,42 @@ const $titleInput = $('#titleInput');
 const $authorInput = $('#authorInput');
 const $addBookBtn = $('#addBookBtn');
 
-let bookId = 0;
-
+let bookId = bookCollection.length;
 
 
 function catchLocal() {
-const catchId = JSON.stringify(bookId);
-const catchCollection = JSON.stringify(bookCollection);
+	const catchCollection = JSON.stringify(bookCollection);
+	const catchId = JSON.stringify(bookId);
 
-localStorage.setItem('bookCollection', catchCollection);
-localStorage.setItem('bookId', catchId);
+	localStorage.setItem('bookCollection', catchCollection);
+	localStorage.setItem('bookId', catchId);
 }
 
 
 function getLocal() {
 	if (localStorage.getItem('bookCollection')){
 	bookCollection = JSON.parse(localStorage.getItem('bookCollection'));
-	let num = bookCollection.lenght
-	bookId = JSON.parse(localStorage.getItem('num'));
-	console.log(bookId)
-	//catchLocal();
+	bookId = JSON.parse(localStorage.getItem('bookId'));
+	catchLocal();
 	}
 }
-
-
-getLocal();
-window.onload = getLocal();
-
-
 
 
 function addBook() {
 	bookCollection.push({title: $titleInput.value, author: $authorInput.value, id: bookId});
 	displayBookCollection();
-	console.log(bookCollection);
 	bookId += 1;
 	catchLocal();
 }
 
+getLocal();
+window.onload = getLocal();
 
 $addBookBtn.addEventListener('click', addBook)
 
 
 function removeBook() {
+
 	catchLocal();
 }
 
@@ -72,7 +65,7 @@ function displayBookCollection() {
 			article.innerHTML = createBook(el);
 			bookContainer.appendChild(article);
 		}
-	)
+		)
 }
 
 displayBookCollection();
