@@ -39,6 +39,7 @@ function bookTemplate(el) {
 }
 
 function renderBooks() {
+  $bookContainer.innerHTML = '';
   bookCollection.forEach((el) => {
     const article = document.createElement('article');
     article.className = 'article-book';
@@ -53,6 +54,7 @@ function createRemoveBtn() {
     el.addEventListener('click', () => {
       bookCollection.splice(index, 1);
       renderBooks();
+      createRemoveBtn();
       saveLocal();
     });
   });
