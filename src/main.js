@@ -9,22 +9,14 @@ const $bookContainer = $('#book-container');
 const $titleInput = $('#titleInput');
 const $authorInput = $('#authorInput');
 
-// ***************
-// Local Storage
-// ***************
-
 class BookApp {
   constructor() {
     this.bookCollection = [];
   }
 
-  book = (titlePar, authorPar) => {
-    const bookObj = {
-      title: titlePar,
-      author: authorPar,
-    };
-    return bookObj;
-  }
+  // ***************
+  // Local Storage
+  // ***************
 
   saveLocal = () => {
     const catchCollection = JSON.stringify(this.bookCollection);
@@ -41,26 +33,34 @@ class BookApp {
   // main functions
   // ***************
 
+  createBook = (newTitle, newAuthor) => {
+    const book = {
+      title: newTitle,
+      author: newAuthor,
+    };
+    return book;
+  }
+
   renderBooks = () => {
     $bookContainer.innerHTML = '';
-    this.bookCollection.forEach((el) => {
+    this.bookCollection.forEach((book) => {
       const article = document.createElement('article');
       article.className = 'article-book';
       article.innerHTML = `
-  <h3 class="bookTitle">"${el.title}" by ${el.author}</h3>
+  <h3 class="bookTitle">"${book.title}" by ${book.author}</h3>
   <button type='button' class="removeBookBtn">Remove</button>
   `;
       $bookContainer.appendChild(article);
     });
   }
 
-  createRemoveBtn = () => {
-    const $removeBookBtn = document.querySelectorAll('.removeBookBtn');
-    $removeBookBtn.forEach((el, index) => {
-      el.addEventListener('click', () => {
+  createRemoveFunction = () => {
+    const removeBtnArray = document.querySelectorAll('.removeBookBtn');
+    removeBtnArray.forEach((button, index) => {
+      button.addEventListener('click', () => {
         this.bookCollection.splice(index, 1);
         this.renderBooks();
-        this.createRemoveBtn();
+        this.createRemoveFunction();
         this.saveLocal();
       });
     });
@@ -68,7 +68,7 @@ class BookApp {
 
   displayBookCollection = () => {
     this.renderBooks();
-    this.createRemoveBtn();
+    this.createRemoveFunction();
   }
 
   clearFields = () => {
@@ -78,7 +78,7 @@ class BookApp {
 
   addBook = () => {
     if ($titleInput.value && $authorInput.value) {
-      const newBook = this.book($titleInput.value, $authorInput.value);
+      const newBook = this.createBook($titleInput.value, $authorInput.value);
       this.bookCollection.push(newBook);
       this.displayBookCollection();
       this.saveLocal();
