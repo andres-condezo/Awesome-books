@@ -20,7 +20,7 @@ window.onscroll = () => { stickMenu(); };
 const $ = (selector) => document.querySelector(selector);
 
 const $addBookBtn = $('#addBookBtn');
-const $bookContainer = $('#book-container');
+const $bookContainer = $('#list-book');
 const $titleInput = $('#titleInput');
 const $authorInput = $('#authorInput');
 
@@ -118,17 +118,25 @@ const showContact = document.querySelector('#showContact');
 
 const bookContainer = document.querySelector('#book-container');
 const addNew = document.querySelector('#add-new');
-const contactSection = document.querySelector('#contact-section');
+const contactSection = document.querySelector('#contact');
 
 
-showBookList.addEventListener('click', () => {
-  bookContainer.classList.toogle('hiddenSection')
-  addNew.classList.toogle('hiddenSection')
-  showContact.classList.toogle('hiddenSection')
-})
+function showPage(section) {
+  if (section == bookContainer) {
+    bookContainer.classList.remove('hiddenSection')
+    addNew.classList.add('hiddenSection')
+    contactSection.classList.add('hiddenSection')
+  } else if ( section == addNew) {
+    bookContainer.classList.add('hiddenSection')
+    addNew.classList.remove('hiddenSection')
+    contactSection.classList.add('hiddenSection')
+  } else if ( section == contactSection) {
+    bookContainer.classList.add('hiddenSection')
+    addNew.classList.add('hiddenSection')
+    contactSection.classList.remove('hiddenSection')
+  }
+}
 
-showNewAdd.addEventListener('click', () => {
-  bookContainer.classList.toogle('hiddenSection')
-  addNew.classList.toogle('hiddenSection')
-  showContact.classList.toogle('hiddenSection')
-})
+showBookList.addEventListener('click', () => {showPage(bookContainer);});
+showNewAdd.addEventListener('click', () => {showPage(addNew);});
+showContact.addEventListener('click', () => {showPage(contactSection);});
