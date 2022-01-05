@@ -4,89 +4,94 @@
 
 const $ = (selector) => document.querySelector(selector);
 
-const $titleInput = $('#titleInput');
-const $authorInput = $('#authorInput');
 const $addBookBtn = $('#addBookBtn');
 const $bookContainer = $('#book-container');
-
-let bookCollection = [];
+const $titleInput = $('#titleInput');
+const $authorInput = $('#authorInput');
 
 // ***************
 // Local Storage
 // ***************
 
-function saveLocal() {
-  const catchCollection = JSON.stringify(bookCollection);
-  localStorage.setItem('bookCollection', catchCollection);
-}
+class BookApp {
+  constructor() {
+    this.bookCollection = [];
+  }
 
-function getLocal() {
-  if (localStorage.getItem('bookCollection')) {
-    bookCollection = JSON.parse(localStorage.getItem('bookCollection'));
+  book = (titlePar, authorPar) => {
+    const bookObj = {
+      title: titlePar,
+      author: authorPar,
+    };
+    return bookObj;
+  }
+
+  saveLocal = () => {
+    const catchCollection = JSON.stringify(this.bookCollection);
+    localStorage.setItem('bookCollection', catchCollection);
+  }
+
+  getLocal = () => {
+    if (localStorage.getItem('bookCollection')) {
+      this.bookCollection = JSON.parse(localStorage.getItem('bookCollection'));
+    }
+  }
+
+  // ***************
+  // main functions
+  // ***************
+
+  renderBooks = () => {
+    $bookContainer.innerHTML = '';
+    this.bookCollection.forEach((el) => {
+      const article = document.createElement('article');
+      article.className = 'article-book';
+      article.innerHTML = `
+  <h3 class="bookTitle">"${el.title}" by ${el.author}</h3>
+  <button type='button' class="removeBookBtn">Remove</button>
+  `;
+      $bookContainer.appendChild(article);
+    });
+  }
+
+  createRemoveBtn = () => {
+    const $removeBookBtn = document.querySelectorAll('.removeBookBtn');
+    $removeBookBtn.forEach((el, index) => {
+      el.addEventListener('click', () => {
+        this.bookCollection.splice(index, 1);
+        this.renderBooks();
+        this.createRemoveBtn();
+        this.saveLocal();
+      });
+    });
+  }
+
+  displayBookCollection = () => {
+    this.renderBooks();
+    this.createRemoveBtn();
+  }
+
+  clearFields = () => {
+    $titleInput.value = '';
+    $authorInput.value = '';
+  }
+
+  addBook = () => {
+    if ($titleInput.value && $authorInput.value) {
+      const newBook = this.book($titleInput.value, $authorInput.value);
+      this.bookCollection.push(newBook);
+      this.displayBookCollection();
+      this.saveLocal();
+      this.clearFields();
+    }
+  }
+
+  main = () => {
+    this.getLocal();
+    this.displayBookCollection();
+    $addBookBtn.addEventListener('click', this.addBook);
   }
 }
 
-// ***************
-// main functions
-// ***************
-
-function bookTemplate(el) {
-  return `
-<h3 class="bookTitle">${el.title}</h3>
-<p class="bookAuthor">${el.author}</p>
-<button type='button' class="removeBookBtn">Remove</button>
-`;
-}
-
-function renderBooks() {
-  $bookContainer.innerHTML = '';
-  bookCollection.forEach((el) => {
-    const article = document.createElement('article');
-    article.className = 'article-book';
-    article.innerHTML = bookTemplate(el);
-    $bookContainer.appendChild(article);
-  });
-}
-
-function createRemoveBtn() {
-  const $removeBookBtn = document.querySelectorAll('.removeBookBtn');
-  $removeBookBtn.forEach((el, index) => {
-    el.addEventListener('click', () => {
-      bookCollection.splice(index, 1);
-      renderBooks();
-      createRemoveBtn();
-      saveLocal();
-    });
-  });
-}
-
-function displayBookCollection() {
-  $bookContainer.innerHTML = '';
-  renderBooks();
-  createRemoveBtn();
-}
-
-function clearFields() {
-  $titleInput.value = '';
-  $authorInput.value = '';
-}
-
-function addBook() {
-  if ($titleInput.value && $authorInput.value) {
-    bookCollection.push({
-      title: $titleInput.value,
-      author: $authorInput.value,
-    });
-    displayBookCollection();
-    saveLocal();
-    clearFields();
-  }
-}
-
-function main() {
-  getLocal();
-  displayBookCollection();
-  $addBookBtn.addEventListener('click', addBook);
-}
-
-main();
+const newApp = new BookApp();
+newApp.main();
