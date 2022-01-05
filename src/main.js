@@ -47,8 +47,7 @@ class BookApp {
       const article = document.createElement('article');
       article.className = 'article-book';
       article.innerHTML = `
-  <h3 class="bookTitle">${el.title}</h3>
-  <p class="bookAuthor">${el.author}</p>
+  <h3 class="bookTitle">"${el.title}" by ${el.author}</h3>
   <button type='button' class="removeBookBtn">Remove</button>
   `;
       $bookContainer.appendChild(article);

@@ -24,26 +24,31 @@ main {
 }
 
 .title {
-  background-color: #eee;
   margin-bottom: 4rem;
 }
 
 .book-container {
-  width: 40%;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: space-between;
+  border: 2px solid black;
 }
 
 .article-book {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.2em;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid #ccc;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.book-container .article-book:nth-child(odd) {
+  background-color: lightgray;
+
+} 
 
 .form {
   margin-top: 2rem;
@@ -52,4 +57,14 @@ main {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.4rem;
+}
+
+.removeBookBtn {
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
+  border-radius: 2px;
+  padding: 0.4rem;
+  background-color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
 }
