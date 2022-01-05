@@ -4,12 +4,10 @@
 
 const $ = (selector) => document.querySelector(selector);
 
-const $titleInput = $('#titleInput');
-const $authorInput = $('#authorInput');
 const $addBookBtn = $('#addBookBtn');
 const $bookContainer = $('#book-container');
-const $title = $titleInput.value;
-const $author = $authorInput.value;
+const $titleInput = $('#titleInput');
+const $authorInput = $('#authorInput');
 
 // ***************
 // Local Storage
@@ -20,7 +18,7 @@ class BookApp {
     this.bookCollection = [];
   }
 
-  static book(titlePar, authorPar) {
+  book = (titlePar, authorPar) => {
     const bookObj = {
       title: titlePar,
       author: authorPar,
@@ -28,14 +26,14 @@ class BookApp {
     return bookObj;
   }
 
-  static saveLocal() {
-    const catchCollection = JSON.stringify(BookApp.bookCollection);
+  saveLocal = () => {
+    const catchCollection = JSON.stringify(this.bookCollection);
     localStorage.setItem('bookCollection', catchCollection);
   }
 
-  static getLocal() {
+  getLocal = () => {
     if (localStorage.getItem('bookCollection')) {
-      BookApp.bookCollection = JSON.parse(localStorage.getItem('bookCollection'));
+      this.bookCollection = JSON.parse(localStorage.getItem('bookCollection'));
     }
   }
 
@@ -43,62 +41,58 @@ class BookApp {
   // main functions
   // ***************
 
-  static bookTemplate(el) {
-    return `
+  renderBooks = () => {
+    $bookContainer.innerHTML = '';
+    this.bookCollection.forEach((el) => {
+      const article = document.createElement('article');
+      article.className = 'article-book';
+      article.innerHTML = `
   <h3 class="bookTitle">${el.title}</h3>
   <p class="bookAuthor">${el.author}</p>
   <button type='button' class="removeBookBtn">Remove</button>
   `;
-  }
-
-  static renderBooks() {
-    $bookContainer.innerHTML = '';
-    console.log('dentro de forEach');
-    BookApp.bookCollection.forEach((el) => {
-      const article = document.createElement('article');
-      article.className = 'article-book';
-      article.innerHTML = BookApp.bookTemplate(el);
       $bookContainer.appendChild(article);
     });
   }
 
-  static createRemoveBtn() {
+  createRemoveBtn = () => {
     const $removeBookBtn = document.querySelectorAll('.removeBookBtn');
     $removeBookBtn.forEach((el, index) => {
       el.addEventListener('click', () => {
-        BookApp.bookCollection.splice(index, 1);
-        BookApp.renderBooks();
-        BookApp.createRemoveBtn();
-        BookApp.saveLocal();
+        this.bookCollection.splice(index, 1);
+        this.renderBooks();
+        this.createRemoveBtn();
+        this.saveLocal();
       });
     });
   }
 
-  static displayBookCollection() {
-    BookApp.renderBooks();
-    BookApp.createRemoveBtn();
+  displayBookCollection = () => {
+    this.renderBooks();
+    this.createRemoveBtn();
   }
 
-  static clearFields() {
+  clearFields = () => {
     $titleInput.value = '';
     $authorInput.value = '';
   }
 
-  static addBook() {
+  addBook = () => {
     if ($titleInput.value && $authorInput.value) {
-      const newBook = BookApp.book($title, $author);
-      BookApp.bookCollection.push(newBook);
-      BookApp.displayBookCollection();
-      BookApp.saveLocal();
-      BookApp.clearFields();
+      const newBook = this.book($titleInput.value, $authorInput.value);
+      this.bookCollection.push(newBook);
+      this.displayBookCollection();
+      this.saveLocal();
+      this.clearFields();
     }
+  }
+
+  main = () => {
+    this.getLocal();
+    this.displayBookCollection();
+    $addBookBtn.addEventListener('click', this.addBook);
   }
 }
 
-// main() {
-BookApp.getLocal();
-BookApp.displayBookCollection();
-$addBookBtn.addEventListener('click', BookApp.addBook);
-// }
-// const Book = new Collection();
-// Book.main();
+const newApp = new BookApp();
+newApp.main();
