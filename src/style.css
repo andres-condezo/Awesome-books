@@ -24,15 +24,16 @@ main {
 }
 
 .title {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
 }
 
 .book-container {
   width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: space-between;
   border: 2px solid black;
+  margin-bottom: 2rem;
 }
 
 .article-book {
@@ -40,31 +41,53 @@ main {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  font-size: 1rem;
+  padding: 0.6rem;
+  font-size: 0.8rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .book-container .article-book:nth-child(odd) {
   background-color: lightgray;
+}
 
-} 
+hr {
+  width: 30%;
+  border: 1px solid black;
+}
 
 .form {
   margin-top: 2rem;
-  width: 40%;
+  width: 30%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.4rem;
 }
 
-.removeBookBtn {
+.form .form-title {
+  padding-bottom: 0.5rem;
+}
+
+.form input {
+  width: 100%;
+  border: 2px solid black;
+  padding: 0.2rem;
+}
+
+::placeholder {
+  font-weight: bold;
+}
+
+.removeBookBtn,
+.addBookBtn {
+  width: 4rem;
+  align-self: flex-end;
   border: 1px solid black;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
   border-radius: 2px;
   padding: 0.4rem;
   background-color: white;
+  font-size: 0.8rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
 }
