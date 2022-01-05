@@ -110,3 +110,25 @@ class BookApp {
 
 const newApp = new BookApp();
 newApp.main();
+
+
+const showBookList = document.querySelector('#showList');
+const showNewAdd = document.querySelector('#showAddBook');
+const showContact = document.querySelector('#showContact');
+
+const bookContainer = document.querySelector('#book-container');
+const addNew = document.querySelector('#add-new');
+const contactSection = document.querySelector('#contact-section');
+
+
+showBookList.addEventListener('click', () => {
+  bookContainer.classList.toogle('hiddenSection')
+  addNew.classList.toogle('hiddenSection')
+  showContact.classList.toogle('hiddenSection')
+})
+
+showNewAdd.addEventListener('click', () => {
+  bookContainer.classList.toogle('hiddenSection')
+  addNew.classList.toogle('hiddenSection')
+  showContact.classList.toogle('hiddenSection')
+})

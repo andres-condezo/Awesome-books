@@ -15,9 +15,9 @@
           <li><a class="header__logo" href="#">Awesome Books</a></li>
           <li class="desktop-menu-container">
             <ul class="desktop-menu">
-              <li><a href="#">List</a></li>
-              <li><a class="middle-item" href="#">Add new</a></li>
-              <li><a href="#">Contact</a></li>
+              <li id='showList'><a href="#">List</a></li>
+              <li id='showAddBook'><a class="middle-item" href="#">Add new</a></li>
+              <li id="showContact"><a href="#">Contact</a></li>
             </ul>
           </li>
         </ul>
@@ -29,14 +29,20 @@
       </h1>
       <section class="book-container" id="book-container">
       </section>
-      <hr />
       <section class="form" id="add-new">
         <h3 class="title">Add a new book</h3>
         <input type="text" placeholder="Title" name="title" id="titleInput"/>
         <input type="text" placeholder="Author" name="author" id="authorInput"/>
         <button type="button" class="addBookBtn" id="addBookBtn">Add</button>
       </section>
-      <section class="contact" id="contact"></section>
+      <section class="contact" id="contact-section">
+        
+        <h3>
+          Contacto
+        </h3>
+
+        <p>Numeros de contacto</p>
+      </section>
     </main>
     <footer>
       © copyright 2022

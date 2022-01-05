@@ -188,6 +188,14 @@ hr {
   gap: 1rem;
 }
 
+.showSection {
+  display: flex;
+}
+
+.hiddenSection {
+  display: none;
+}
+
 .form .form-title {
   padding-bottom: 0.5rem;
 }
@@ -223,6 +231,10 @@ hr {
 .addBookBtn:hover {
   background-color: var(--primary-color);
   color: #fff;
+}
+
+.contact {
+  display: flex;
 }
 
 footer {
