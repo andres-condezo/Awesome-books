@@ -23,24 +23,37 @@ const bookContainer = document.querySelector('#book-container');
 const addNew = document.querySelector('#add-new');
 const contactSection = document.querySelector('#contact-section');
 
+const neutralColor = '#172b4d';
+const accentColor = '#2230d2';
+
 addNew.classList.add('hideSection');
 contactSection.classList.add('hideSection');
+showBookList.style.color = accentColor;
 
-function showPage(section) {
+const showPage = (section) => {
   if (section === bookContainer) {
     bookContainer.classList.remove('hideSection');
+    showBookList.style.color = accentColor;
     addNew.classList.add('hideSection');
+    showNewAdd.style.color = neutralColor;
     contactSection.classList.add('hideSection');
+    showContact.style.color = neutralColor;
   } else if (section === addNew) {
     bookContainer.classList.add('hideSection');
+    showBookList.style.color = neutralColor;
     addNew.classList.remove('hideSection');
+    showNewAdd.style.color = accentColor;
     contactSection.classList.add('hideSection');
+    showContact.style.color = neutralColor;
   } else if (section === contactSection) {
     bookContainer.classList.add('hideSection');
+    showBookList.style.color = neutralColor;
     addNew.classList.add('hideSection');
+    showNewAdd.style.color = neutralColor;
     contactSection.classList.remove('hideSection');
+    showContact.style.color = accentColor;
   }
-}
+};
 
 showBookList.addEventListener('click', () => { showPage(bookContainer); });
 showNewAdd.addEventListener('click', () => { showPage(addNew); });
