@@ -8,7 +8,7 @@
   <title>Document</title>
 </head>
 <body>
-  <section class="main-container">
+  <div class="main-container">
     <header id="header">
       <nav>
         <ul class="header__ul">
@@ -24,27 +24,38 @@
       </nav>
     </header>
     <main>
+
       <section class="book-container" id="book-container">
         <h1 class="title">
           Awesome books
         </h1>
         <div class="list-book" id="list-book"></div>
-
-      </section>
-      <section class="form" id="add-new">
-        <h3 class="title">Add a new book</h3>
-        <input type="text" placeholder="Title" name="title" id="titleInput"/>
-        <input type="text" placeholder="Author" name="author" id="authorInput"/>
-        <button type="button" class="addBookBtn" id="addBookBtn">Add</button>
       </section>
 
-      <section class="contact" id="contact-section">
-        
-        <div id="contact">
-          <h3>
-            Contacto
+      <section class="add-new" id="add-new">
+        <div class="form">
+          <h3 class="title">Add a new book</h3>
+          <input type="text" placeholder="Title" name="title" id="titleInput"/>
+          <input type="text" placeholder="Author" name="author" id="authorInput"/>
+          <button type="button" class="addBookBtn" id="addBookBtn">Add</button>
+        </div>
+      </section>
+
+      <section class="contact-container" id="contact-section">
+        <div id="contact" class="contact">
+          <h3 class="title">
+            Contact
           </h3>
-          <p>Numeros de contacto</p>
+          <div class="text-container">
+            Do have any question or you just want to say "Hello"?
+            <br />
+            You can reach out to us!
+            <ul class="list-contact">
+              <li>Our e-mail: mail@mail.com</li>
+              <li>Our phone number: 0043586534422</li>
+              <li>Our address: Street name 22, 84503 City, Country</li>
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -52,9 +63,10 @@
     <footer>
       © copyright 2022
     </footer>
-  </section>
+  </div>
 
   <script src="./src/main.js"></script>
+  <script src="./src/navigation.js"></script>
   
 </body>
 </html>
