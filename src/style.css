@@ -133,6 +133,14 @@ header nav ul li .header__logo[disabled] {
   color: var(--accent-color);
 }
 
+.desktop-menu li a:active {
+  color: var(--accent-color);
+}
+
+.desktop-menu li a:focus {
+  color: cyan;
+}
+
 .title {
   min-width: 30rem;
   background-color: #fff;
@@ -239,6 +247,12 @@ hr {
   color: #fff;
 }
 
+.removeBookBtn,
+.addBookBtn {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
 .contact-container {
   width: 100%;
   background-color: #fff;
@@ -269,8 +283,4 @@ footer {
 
 .hideSection {
   display: none;
-}
-
-header nav ul li .activeLink {
-  color: var(--accent-color);
 }
