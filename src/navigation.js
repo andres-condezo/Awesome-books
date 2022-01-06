@@ -19,14 +19,11 @@ const bookContainer = document.querySelector('#book-container');
 const addNew = document.querySelector('#add-new');
 const contactSection = document.querySelector('#contact-section');
 
-const activateSection = (btn, section) => {
-  btn.classList.add('activeLink');
+const activateSection = (section) => {
   section.classList.remove('hideSection');
 };
 
-const deactivateSection = (btn, btn2, section, section2) => {
-  btn.classList.remove('activeLink');
-  btn2.classList.remove('activeLink');
+const deactivateSection = (section, section2) => {
   section.classList.add('hideSection');
   section2.classList.add('hideSection');
 };
@@ -34,19 +31,19 @@ const deactivateSection = (btn, btn2, section, section2) => {
 const btnArr = document.querySelectorAll('.menu-link');
 const sectionArr = [bookContainer, addNew, contactSection];
 
-activateSection(btnArr[0], sectionArr[0]);
-deactivateSection(btnArr[1], btnArr[2], sectionArr[1], sectionArr[2]);
+activateSection(sectionArr[0]);
+deactivateSection(sectionArr[1], sectionArr[2]);
 
 const showPage = (section) => {
   if (section === bookContainer) {
-    activateSection(btnArr[0], sectionArr[0]);
-    deactivateSection(btnArr[1], btnArr[2], sectionArr[1], sectionArr[2]);
+    activateSection(sectionArr[0]);
+    deactivateSection(sectionArr[1], sectionArr[2]);
   } else if (section === addNew) {
-    activateSection(btnArr[1], sectionArr[1]);
-    deactivateSection(btnArr[0], btnArr[2], sectionArr[0], sectionArr[2]);
+    activateSection(sectionArr[1]);
+    deactivateSection(sectionArr[0], sectionArr[2]);
   } else if (section === contactSection) {
-    activateSection(btnArr[2], sectionArr[2]);
-    deactivateSection(btnArr[0], btnArr[1], sectionArr[0], sectionArr[1]);
+    activateSection(sectionArr[2]);
+    deactivateSection(sectionArr[0], sectionArr[1]);
   }
 };
 
