@@ -4,13 +4,11 @@
 
 ## Screenshots:
 
-- Mobile version:
+![screenshot](./src/img/screenshot-1.png)
 
-![screenshot](./src/img/screenshot-mobile.png)
+![screenshot](./src/img/screenshot-2.png)
 
-- Desktop version:
-
-![screenshot](./src/img/screenshot-desktop.png)
+![screenshot](./src/img/screenshot-3.png)
 
 
 ## Built With
@@ -26,6 +24,11 @@
 
 - Understand different ways to create objects in JavaScript.
 - Create and access properties and methods of JavaScript objects.
+- Use JavaScript classes.
+- Understand how to use medium-fidelity wireframes to create a UI.
+- Understand the concept of single page application.
+- Use JavaScript to manipulate DOM elements.
+- Use JavaScript events.
 
 ## Getting Started
 

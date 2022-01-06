@@ -1,39 +1,168 @@
+/* CSS variables */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --neutral-color: #172b4d;
+  --primary-color: #300350;
+  --accent-color: #2230d2;
+  --font-sans: 'Poppins', sans-serif;
+}
+
+/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* Setting font family and size */
+html {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 62.5%;
 }
 
 body {
-  background-color: #eee;
+  background-image: url(./img/background.png);
+  background-position: center center;
+  background-size: cover;
   width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  margin-bottom: 4rem;
+}
+
+.main-container {
+  width: 60%;
+  margin-top: 4rem;
+  padding: 4rem;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 8);
+  background-color: #f2c75b;
+}
+
+main {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow-x: hidden;
 }
 
-main {
-  width: 60%;
-  padding: 4rem;
+header {
+  width: 100%;
+  box-shadow: 8px 8px 0 var(--primary-color);
+  border: 2px solid var(--primary-color);
+  margin-bottom: 4rem;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+header nav .header__ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 44px;
+  background-color: white;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  list-style-type: none;
+}
+
+header nav ul li .header__logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-left: 2.5rem;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+header nav ul li .header__logo:hover {
+  color: var(--accent-color);
+}
+
+header nav ul li .header__logo:active {
+  color: white;
+  background-color: var(--secondary-color);
+}
+
+header nav ul li .header__logo:disabled,
+header nav ul li .header__logo[disabled] {
+  color: var(--neutral-color);
+  background-color: white;
+}
+
+.desktop-menu-container {
+  display: flex;
+}
+
+.desktop-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.desktop-menu li {
+  list-style-type: none;
+}
+
+.middle-item {
+  border-right: 2px solid var(--neutral-color);
+  border-left: 2px solid var(--neutral-color);
+  padding: 0 1.5rem 0 1.5rem;
+}
+
+.desktop-menu li a {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  text-decoration: none;
+  padding: 0 2.5rem 0 2.5rem;
+  color: var(--neutral-color);
+}
+
+.desktop-menu li a:hover {
+  color: var(--accent-color);
+}
+
+.title {
+  min-width: 30rem;
+  background-color: #fff;
+  font-size: 1.4rem;
+  border: 2px solid var(--primary-color);
+  box-shadow: 8px 8px 0 var(--primary-color);
+  padding: 1rem 2rem;
+  margin: 2rem 0 4rem 0;
+  text-align: center;
+}
+
+.book-container {
+  width: 100%;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-
-.title {
-  margin-bottom: 2rem;
-  font-size: 1.4rem;
-}
-
-.book-container {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
   border: 2px solid black;
+  padding: 2rem;
   margin-bottom: 2rem;
+  box-shadow: 8px 8px 0 var(--primary-color);
+}
+
+.list-book {
+  width: 96%;
+  background-color: #fff;
+  border: 2px solid black;
+  padding: 2rem;
+  margin-bottom: 4rem;
+  box-shadow: 8px 8px 0 var(--primary-color);
 }
 
 .article-book {
@@ -41,8 +170,8 @@ main {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6rem;
-  font-size: 0.8rem;
+  padding: 1.4rem;
+  font-size: 1.2rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -55,13 +184,24 @@ hr {
   border: 1px solid black;
 }
 
-.form {
-  margin-top: 2rem;
-  width: 30%;
+.add-new {
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid black;
+  padding: 4rem;
+  margin-bottom: 2rem;
+  box-shadow: 8px 8px 0 var(--primary-color);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+}
+
+.form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 .form .form-title {
@@ -70,8 +210,9 @@ hr {
 
 .form input {
   width: 100%;
-  border: 2px solid black;
-  padding: 0.2rem;
+  padding: 1rem;
+  border: 2px solid var(--primary-color);
+  box-shadow: 4px 4px 0 var(--primary-color);
 }
 
 ::placeholder {
@@ -80,14 +221,52 @@ hr {
 
 .removeBookBtn,
 .addBookBtn {
-  width: 4rem;
+  width: 8rem;
   align-self: flex-end;
-  border: 1px solid black;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
-  border-radius: 2px;
-  padding: 0.4rem;
-  background-color: white;
-  font-size: 0.8rem;
+  border: 2px solid var(--primary-color);
+  box-shadow: 4px 4px 0 var(--primary-color);
+  padding: 1rem;
+  background-color: #fff;
+  font-size: 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.removeBookBtn:hover,
+.addBookBtn:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.contact-container {
+  width: 100%;
+  background-color: #fff;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid var(--primary-color);
+  box-shadow: 8px 8px 0 var(--primary-color);
+  padding: 4rem;
+}
+
+.list-contact {
+  font-size: 1.6rem;
+  margin: 1rem 0 3rem 4rem;
+}
+
+footer {
+  width: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 4rem;
+  color: var(--neutral-color);
+  border: 2px solid var(--primary-color);
+  box-shadow: 8px 8px 0 var(--primary-color);
+}
+
+.hideSection {
+  display: none;
 }
