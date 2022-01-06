@@ -270,3 +270,7 @@ footer {
 .hideSection {
   display: none;
 }
+
+header nav ul li .activeLink {
+  color: var(--accent-color);
+}
