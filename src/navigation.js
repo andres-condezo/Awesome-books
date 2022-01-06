@@ -1,18 +1,3 @@
-// sticky menu
-
-const header = document.getElementById('header');
-const sticky = header.offsetTop;
-
-function stickMenu() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add('sticky');
-  } else {
-    header.classList.remove('sticky');
-  }
-}
-
-window.onscroll = () => { stickMenu(); };
-
 // nav bar
 
 const bookContainer = document.querySelector('#book-container');
