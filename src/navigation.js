@@ -15,46 +15,41 @@ window.onscroll = () => { stickMenu(); };
 
 // nav bar
 
-const showBookList = document.querySelector('#showList');
-const showNewAdd = document.querySelector('#showAddBook');
-const showContact = document.querySelector('#showContact');
-
 const bookContainer = document.querySelector('#book-container');
 const addNew = document.querySelector('#add-new');
 const contactSection = document.querySelector('#contact-section');
 
-const neutralColor = '#172b4d';
-const accentColor = '#2230d2';
+const activateSection = (btn, section) => {
+  btn.classList.add('activeLink');
+  section.classList.remove('hideSection');
+};
 
-addNew.classList.add('hideSection');
-contactSection.classList.add('hideSection');
-showBookList.style.color = accentColor;
+const deactivateSection = (btn, btn2, section, section2) => {
+  btn.classList.remove('activeLink');
+  btn2.classList.remove('activeLink');
+  section.classList.add('hideSection');
+  section2.classList.add('hideSection');
+};
+
+const btnArr = document.querySelectorAll('.menu-link');
+const sectionArr = [bookContainer, addNew, contactSection];
+
+activateSection(btnArr[0], sectionArr[0]);
+deactivateSection(btnArr[1], btnArr[2], sectionArr[1], sectionArr[2]);
 
 const showPage = (section) => {
   if (section === bookContainer) {
-    bookContainer.classList.remove('hideSection');
-    showBookList.style.color = accentColor;
-    addNew.classList.add('hideSection');
-    showNewAdd.style.color = neutralColor;
-    contactSection.classList.add('hideSection');
-    showContact.style.color = neutralColor;
+    activateSection(btnArr[0], sectionArr[0]);
+    deactivateSection(btnArr[1], btnArr[2], sectionArr[1], sectionArr[2]);
   } else if (section === addNew) {
-    bookContainer.classList.add('hideSection');
-    showBookList.style.color = neutralColor;
-    addNew.classList.remove('hideSection');
-    showNewAdd.style.color = accentColor;
-    contactSection.classList.add('hideSection');
-    showContact.style.color = neutralColor;
+    activateSection(btnArr[1], sectionArr[1]);
+    deactivateSection(btnArr[0], btnArr[2], sectionArr[0], sectionArr[2]);
   } else if (section === contactSection) {
-    bookContainer.classList.add('hideSection');
-    showBookList.style.color = neutralColor;
-    addNew.classList.add('hideSection');
-    showNewAdd.style.color = neutralColor;
-    contactSection.classList.remove('hideSection');
-    showContact.style.color = accentColor;
+    activateSection(btnArr[2], sectionArr[2]);
+    deactivateSection(btnArr[0], btnArr[1], sectionArr[0], sectionArr[1]);
   }
 };
 
-showBookList.addEventListener('click', () => { showPage(bookContainer); });
-showNewAdd.addEventListener('click', () => { showPage(addNew); });
-showContact.addEventListener('click', () => { showPage(contactSection); });
+btnArr.forEach((btn, index) => {
+  btn.addEventListener('click', () => { showPage(sectionArr[index]); });
+});
