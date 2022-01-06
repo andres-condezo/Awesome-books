@@ -121,8 +121,8 @@ header nav ul li .header__logo[disabled] {
 
 .desktop-menu li a {
   font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 1.2rem;
+  font-weight: 700;
+  font-size: 1.3rem;
   line-height: 2rem;
   text-decoration: none;
   padding: 0 2.5rem 0 2.5rem;
