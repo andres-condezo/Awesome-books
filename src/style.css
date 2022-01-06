@@ -55,13 +55,8 @@ header {
   box-shadow: 8px 8px 0 var(--primary-color);
   border: 2px solid var(--primary-color);
   margin-bottom: 4rem;
-}
-
-.sticky {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  z-index: 9;
 }
 
 header nav .header__ul {
