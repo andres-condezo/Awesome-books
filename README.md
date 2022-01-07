@@ -4,11 +4,11 @@
 
 ## Screenshots:
 
-![screenshot](./src/img/screenshot-1.png)
+![screenshot](./src/img/screenshot-list.png)
 
-![screenshot](./src/img/screenshot-2.png)
+![screenshot](./src/img/screenshot-add-new.png)
 
-![screenshot](./src/img/screenshot-3.png)
+![screenshot](./src/img/screenshot-contact.png)
 
 
 ## Built With
