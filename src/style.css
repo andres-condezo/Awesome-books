@@ -16,12 +16,10 @@
 }
 
 /* Setting font family and size */
+
 html {
   font-family: var(--font-sans), sans-serif;
   font-size: 62.5%;
-}
-
-body {
   background-image: url(./img/background.png);
   background-position: center center;
   background-size: cover;
@@ -31,10 +29,9 @@ body {
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
-  margin-bottom: 4rem;
 }
 
-.main-container {
+body {
   width: 60%;
   margin-top: 4rem;
   padding: 4rem;
@@ -183,16 +180,16 @@ header nav ul li .header__logo[disabled] {
 }
 
 hr {
-  width: 30%;
-  border: 1px solid black;
+  height: 80%;
+  border-right: 2px solid var(--primary-color);
 }
 
 .add-new {
   width: 100%;
   background-color: #fff;
-  border: 2px solid black;
   padding: 4rem;
   margin-bottom: 2rem;
+  border: 2px solid var(--primary-color);
   box-shadow: 8px 8px 0 var(--primary-color);
   display: flex;
   flex-direction: column;
@@ -200,11 +197,22 @@ hr {
 }
 
 .form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form .inputs {
   width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  border: 2px solid var(--primary-color);
+  box-shadow: 8px 8px 0 var(--primary-color);
+  padding: 3rem 5rem;
+  margin-bottom: 3rem;
 }
 
 .form .form-title {
@@ -242,10 +250,11 @@ hr {
   color: #fff;
 }
 
-.removeBookBtn,
-.addBookBtn {
-  background-color: var(--primary-color);
+.removeBookBtn:active,
+.addBookBtn:active {
+  background-color: purple;
   color: #fff;
+  transform: translate(2px, 2px);
 }
 
 .contact-container {
