@@ -9,14 +9,16 @@ const $bookContainer = $('#list-book');
 const $titleInput = $('#titleInput');
 const $authorInput = $('#authorInput');
 
+// ***************
+// BookApp Class
+// ***************
+
 class BookApp {
   constructor() {
     this.bookCollection = [];
   }
 
-  // ***************
   // Local Storage
-  // ***************
 
   saveLocal = () => {
     const catchCollection = JSON.stringify(this.bookCollection);
@@ -29,9 +31,7 @@ class BookApp {
     }
   }
 
-  // ***************
   // main functions
-  // ***************
 
   createBook = (newTitle, newAuthor) => {
     const book = {
@@ -41,15 +41,17 @@ class BookApp {
     return book;
   }
 
+  bookTemplate = (book) => `
+  <h3 class="bookTitle">"${book.title}" by ${book.author}</h3>
+  <button type='button' class="removeBookBtn">Remove</button>
+  `;
+
   renderBooks = () => {
     $bookContainer.innerHTML = '';
     this.bookCollection.forEach((book) => {
       const article = document.createElement('article');
       article.className = 'article-book';
-      article.innerHTML = `
-  <h3 class="bookTitle">"${book.title}" by ${book.author}</h3>
-  <button type='button' class="removeBookBtn">Remove</button>
-  `;
+      article.innerHTML = this.bookTemplate(book);
       $bookContainer.appendChild(article);
     });
   }
@@ -81,8 +83,8 @@ class BookApp {
       const newBook = this.createBook($titleInput.value, $authorInput.value);
       this.bookCollection.push(newBook);
       this.displayBookCollection();
-      this.saveLocal();
       this.clearFields();
+      this.saveLocal();
     }
   }
 
