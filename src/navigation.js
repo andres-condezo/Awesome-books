@@ -1,37 +1,28 @@
-// nav bar
+const btnArr = document.querySelectorAll('.menu-link');
+const sectionArr = document.querySelectorAll('.section');
 
-const bookContainer = document.querySelector('#book-container');
-const addNew = document.querySelector('#add-new');
-const contactSection = document.querySelector('#contact-section');
-
-const activateSection = (section) => {
+const activateSection = (btn, section) => {
+  btn.classList.add('activeLink');
   section.classList.remove('hideSection');
 };
 
-const deactivateSection = (section, section2) => {
+const deactivateSection = (btn, section) => {
+  btn.classList.remove('activeLink');
   section.classList.add('hideSection');
-  section2.classList.add('hideSection');
 };
 
-const btnArr = document.querySelectorAll('.menu-link');
-const sectionArr = [bookContainer, addNew, contactSection];
-
-activateSection(sectionArr[0]);
-deactivateSection(sectionArr[1], sectionArr[2]);
-
-const showPage = (section) => {
-  if (section === bookContainer) {
-    activateSection(sectionArr[0]);
-    deactivateSection(sectionArr[1], sectionArr[2]);
-  } else if (section === addNew) {
-    activateSection(sectionArr[1]);
-    deactivateSection(sectionArr[0], sectionArr[2]);
-  } else if (section === contactSection) {
-    activateSection(sectionArr[2]);
-    deactivateSection(sectionArr[0], sectionArr[1]);
+const showPage = (index) => {
+  for (let i = 0; i < sectionArr.length; i += 1) {
+    if (i === index) {
+      activateSection(btnArr[i], sectionArr[i]);
+    } else {
+      deactivateSection(btnArr[i], sectionArr[i]);
+    }
   }
 };
 
 btnArr.forEach((btn, index) => {
-  btn.addEventListener('click', () => { showPage(sectionArr[index]); });
+  btn.addEventListener('click', () => { showPage(index); });
 });
+
+showPage(0);
