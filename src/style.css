@@ -129,7 +129,7 @@ header nav ul li .header__logo[disabled] {
 }
 
 .desktop-menu li a:active {
-  color: var(--accent-color);
+  color: cyan;
 }
 
 .desktop-menu li a:focus {
@@ -278,4 +278,8 @@ footer {
 
 .hideSection {
   display: none;
+}
+
+header nav ul li .activeLink {
+  color: cyan;
 }
