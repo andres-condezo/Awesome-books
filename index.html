@@ -8,7 +8,6 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="main-container">
     <header id="header">
       <nav>
         <ul class="header__ul">
@@ -16,7 +15,9 @@
           <li class="desktop-menu-container">
             <ul class="desktop-menu">
               <li><a id='showList' class="menu-link" href="#">List</a></li>
-              <li><a id='showAddBook' class="menu-link middle-item" href="#">Add new</a></li>
+              <hr />
+              <li><a id='showAddBook' class="menu-link" href="#">Add new</a></li>
+              <hr />
               <li><a id='showContact' class="menu-link" href="#">Contact</a></li>
             </ul>
           </li>
@@ -35,9 +36,11 @@
       <section class="section add-new" id="add-new">
         <div class="form">
           <h3 class="title">Add a new book</h3>
-          <input type="text" placeholder="Title" name="title" id="titleInput"/>
-          <input type="text" placeholder="Author" name="author" id="authorInput"/>
-          <button type="button" class="addBookBtn" id="addBookBtn">Add</button>
+          <div class="inputs">
+            <input type="text" placeholder="Title" name="title" id="titleInput"/>
+            <input type="text" placeholder="Author" name="author" id="authorInput"/>
+            <button type="button" class="addBookBtn" id="addBookBtn">Add</button>
+          </div>
         </div>
       </section>
 
@@ -63,7 +66,6 @@
     <footer>
       © copyright 2022
     </footer>
-  </div>
 
   <script src="./src/main.js"></script>
   <script src="./src/navigation.js"></script>
