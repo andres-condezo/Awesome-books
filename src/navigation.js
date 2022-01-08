@@ -1,27 +1,22 @@
-const btnArr = document.querySelectorAll('.menu-link');
+const linkArr = document.querySelectorAll('.menu-link');
 const sectionArr = document.querySelectorAll('.section');
 
-const activateSection = (btn, section) => {
-  btn.classList.add('activeLink');
-  section.classList.remove('hideSection');
+const activateSection = (index) => {
+  linkArr[index].classList.add('activeLink');
+  sectionArr[index].classList.remove('hideSection');
 };
 
-const deactivateSection = (btn, section) => {
-  btn.classList.remove('activeLink');
-  section.classList.add('hideSection');
+const deactivateSection = (index) => {
+  linkArr[index].classList.remove('activeLink');
+  sectionArr[index].classList.add('hideSection');
 };
 
 const showPage = (index) => {
-  for (let i = 0; i < sectionArr.length; i += 1) {
-    if (i === index) {
-      activateSection(btnArr[i], sectionArr[i]);
-    } else {
-      deactivateSection(btnArr[i], sectionArr[i]);
-    }
-  }
+  sectionArr.forEach((_, i) => { deactivateSection(i); });
+  activateSection(index);
 };
 
-btnArr.forEach((btn, index) => {
+linkArr.forEach((btn, index) => {
   btn.addEventListener('click', () => { showPage(index); });
 });
 
